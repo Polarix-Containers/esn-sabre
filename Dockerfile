@@ -23,7 +23,7 @@ RUN apk -U upgrade \
         ${PHP}-mbstring \
         ${PHP}-zip \
         ${PHP}-xml \
-        ${PHP}-pecl-apcu
+        ${PHP}-pecl-apcu \
 
     && apk add --virtual .build-deps \
         build-base pkgconf \
