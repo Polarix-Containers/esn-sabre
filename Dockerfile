@@ -10,7 +10,7 @@ ARG UID
 ARG GID
 ARG PHP
 
-FROM linagora/esn-sabre:${VERSION} AS extract
+FROM linagora/esn-sabre:sabre-${VERSION} AS extract
 
 FROM alpine
 
