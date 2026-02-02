@@ -20,20 +20,20 @@ LABEL maintainer="Thien Tran contact@tommytran.io"
 RUN apk -U upgrade \
     && apk add ca-certificates composer curl git libstdc++ nginx supervisor \
         ${PHP} \
-        ${PHP}-fpm \
-        ${PHP}-curl \
-        ${PHP}-ldap \
-        ${PHP}-bcmath \
-        ${PHP}-mbstring \
-        ${PHP}-zip \
-        ${PHP}-xml \
-        ${PHP}-pecl-apcu \
-    && apk add --virtual .build-deps \
-        build-base pkgconf \
-        ${PHP}-dev \
-        ${PHP}-pear \
-    && rm -rf /var/cache/apk/* \
-    && pecl install mongodb
+    #     ${PHP}-fpm \
+    #     ${PHP}-curl \
+    #     ${PHP}-ldap \
+    #     ${PHP}-bcmath \
+    #     ${PHP}-mbstring \
+    #     ${PHP}-zip \
+    #     ${PHP}-xml \
+    #     ${PHP}-pecl-apcu \
+    # && apk add --virtual .build-deps \
+    #     build-base pkgconf \
+    #     ${PHP}-dev \
+    #     ${PHP}-pear \
+    # && rm -rf /var/cache/apk/* \
+    # && pecl install mongodb
 
 # Need some stuff here
 
