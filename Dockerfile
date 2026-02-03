@@ -35,6 +35,8 @@ RUN apk -U upgrade \
     # && rm -rf /var/cache/apk/* \
     # && pecl install mongodb
 
+RUN apk add php84-fpm
+
 # Need some stuff here
 
 # Set up Nginx (combine RUN commands)
