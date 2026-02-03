@@ -19,7 +19,8 @@ LABEL maintainer="Thien Tran contact@tommytran.io"
 #Install dependencies and fix issue in apache
 RUN apk -U upgrade \
     && apk add ca-certificates composer curl git libstdc++ nginx supervisor \
-        ${PHP}
+        ${PHP} \
+        php84-fpm
         # ${PHP}-fpm \
         # ${PHP}-curl \
         # ${PHP}-ldap \
@@ -34,8 +35,6 @@ RUN apk -U upgrade \
     #     ${PHP}-pear \
     # && rm -rf /var/cache/apk/* \
     # && pecl install mongodb
-
-RUN apk add php84-fpm
 
 # Need some stuff here
 
