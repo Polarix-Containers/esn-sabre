@@ -3,6 +3,8 @@ ARG UID=200020
 ARG GID=200020
 ARG PHP=php84
 
+FROM linagora/esn-sabre:sabre-${VERSION} AS extract
+
 FROM alpine
 
 ARG VERSION
@@ -10,30 +12,26 @@ ARG UID
 ARG GID
 ARG PHP
 
-FROM linagora/esn-sabre:sabre-${VERSION} AS extract
-
-FROM alpine
-
 LABEL maintainer="Thien Tran contact@tommytran.io"
 
 #Install dependencies and fix issue in apache
 RUN apk -U upgrade \
     && apk add ca-certificates composer curl git libstdc++ nginx supervisor \
-    && apk add php84 \
-        php84-fpm \
-        php84-curl \
-        php84-ldap \
-        php84-bcmath \
-        php84-mbstring \
-        php84-zip \
-        php84-xml \
-        php84-pecl-apcu
-    # && apk add --virtual .build-deps \
-    #     build-base pkgconf \
-    #     ${PHP}-dev \
-    #     ${PHP}-pear \
-    # && rm -rf /var/cache/apk/* \
-    # && pecl install mongodb
+        ${PHP}-fpm \
+        ${PHP}-cli \
+        ${PHP}-curl \
+        ${PHP}-ldap \
+        ${PHP}-bcmath \
+        ${PHP}-mbstring \
+        ${PHP}-zip \
+        ${PHP}-xml \
+        ${PHP}-pecl-apcu \
+    && apk add --virtual .build-deps \
+        build-base pkgconf \
+        ${PHP}-dev \
+        ${PHP}-pear \
+    && rm -rf /var/cache/apk/* \
+    && pecl install mongodb
 
 # Need some stuff here
 
