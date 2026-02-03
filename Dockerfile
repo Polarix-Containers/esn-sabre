@@ -19,15 +19,15 @@ LABEL maintainer="Thien Tran contact@tommytran.io"
 #Install dependencies and fix issue in apache
 RUN apk -U upgrade \
     && apk add ca-certificates composer curl git libstdc++ nginx supervisor \
-    && apk add ${PHP} \
-        ${PHP}-fpm \
-        ${PHP}-curl \
-        ${PHP}-ldap \
-        ${PHP}-bcmath \
-        ${PHP}-mbstring \
-        ${PHP}-zip \
-        ${PHP}-xml \
-        ${PHP}-pecl-apcu
+    && apk add php84 \
+        php84-fpm \
+        php84-curl \
+        php84-ldap \
+        php84-bcmath \
+        php84-mbstring \
+        php84-zip \
+        php84-xml \
+        php84-pecl-apcu
     # && apk add --virtual .build-deps \
     #     build-base pkgconf \
     #     ${PHP}-dev \
