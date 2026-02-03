@@ -26,12 +26,12 @@ RUN apk -U upgrade \
         ${PHP}-zip \
         ${PHP}-xml \
         ${PHP}-pecl-apcu \
+        ${PHP}-pecl-mongodb \
     && apk add --virtual .build-deps \
         build-base pkgconf \
         ${PHP}-dev \
         ${PHP}-pear \
-    && rm -rf /var/cache/apk/* \
-    && pecl install mongodb
+    && rm -rf /var/cache/apk/*
 
 # Need some stuff here
 
