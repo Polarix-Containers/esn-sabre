@@ -59,15 +59,15 @@ RUN git config --global --add safe.directory '/var/www/vendor/sabre/vobject' && 
     apk del git
 
 # Configure application
-RUN cp -v docker/prepare/set_nginx_htpasswd.sh /root/set_nginx_htpasswd.sh && \
-    cp -v docker/config/nginx.conf /etc/nginx/nginx.conf && \
-    cp -v docker/config/default.conf /etc/nginx/sites-available/default && \
-    cp -v docker/supervisord.conf /etc/supervisor/conf.d/ && \
-    rm -rf html && \
-    chown -R nginx:nginx /var/www && \
-    /root/set_nginx_htpasswd.sh && \
-    mkdir -p /var/run/php
+COPY nginx.conf /etc/nginx/nginx.conf
 
+RUN cp -v docker/prepare/set_nginx_htpasswd.sh /root/set_nginx_htpasswd.sh \
+    && cp -v docker/config/default.conf /etc/nginx/http.d/default \
+    && cp -v docker/supervisord.conf /etc/supervisor/conf.d/ \
+    && rm -rf html \
+    && chown -R nginx:nginx /var/www \
+    && /root/set_nginx_htpasswd.sh \
+    && mkdir -p /var/run/php
 
 EXPOSE 80
 
