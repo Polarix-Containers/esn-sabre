@@ -46,7 +46,7 @@ RUN apk -U upgrade \
 #RUN ln -sf /dev/stderr /var/log/nginx/error.log && \
 #    ln -sf /dev/stdout /var/log/nginx/access.log
 
-COPY --from=extract /var/www /var
+COPY --from=extract /var/www /var/www
 
 WORKDIR /var/www
 
@@ -66,7 +66,8 @@ RUN cp docker/prepare/set_nginx_htpasswd.sh /root/set_nginx_htpasswd.sh \
     && cp docker/supervisord.conf /etc/supervisord.conf \
     && rm -rf localhost \
     && chown -R nginx:nginx /var/www \
-    && /root/set_nginx_htpasswd.sh \
+    && chmod u+x /root/set_nginx_htpasswd.sh \
+    && /root/set_nginx_htpasswd.sh
     && mkdir -p /var/run/php
 
 EXPOSE 80
