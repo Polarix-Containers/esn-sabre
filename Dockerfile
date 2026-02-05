@@ -30,6 +30,8 @@ RUN apk -U upgrade \
         ${PHP}-sockets \
         ${PHP}-ctype \
         ${PHP}-dom \
+        ${PHP}-simplexml \
+        ${PHP}-xmlreader \
     && apk add --virtual .build-deps \
         build-base pkgconf \
         ${PHP}-dev \
