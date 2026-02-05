@@ -32,6 +32,7 @@ RUN apk -U upgrade \
         ${PHP}-dom \
         ${PHP}-simplexml \
         ${PHP}-xmlreader \
+        ${PHP}-xmlwriter \
     && apk add --virtual .build-deps \
         build-base pkgconf \
         ${PHP}-dev \
