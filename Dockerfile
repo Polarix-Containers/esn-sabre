@@ -46,7 +46,7 @@ RUN apk -U upgrade \
 #RUN ln -sf /dev/stderr /var/log/nginx/error.log && \
 #    ln -sf /dev/stdout /var/log/nginx/access.log
 
-COPY --from=extract /var/www /var/www
+COPY --from=extract /var/www /var
 
 WORKDIR /var/www
 
