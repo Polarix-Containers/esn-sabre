@@ -27,6 +27,9 @@ RUN apk -U upgrade \
         ${PHP}-xml \
         ${PHP}-pecl-apcu \
         ${PHP}-pecl-mongodb \
+        ${PHP}-sockets \
+        ${PHP}-ctype \
+        ${PHP}-dom \
     && apk add --virtual .build-deps \
         build-base pkgconf \
         ${PHP}-dev \
