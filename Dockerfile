@@ -67,7 +67,7 @@ RUN cp docker/prepare/set_nginx_htpasswd.sh /root/set_nginx_htpasswd.sh \
     && rm -rf localhost \
     && chown -R nginx:nginx /var/www \
     && chmod u+x /root/set_nginx_htpasswd.sh \
-    && /root/set_nginx_htpasswd.sh
+    && /root/set_nginx_htpasswd.sh \
     && mkdir -p /var/run/php
 
 EXPOSE 80
