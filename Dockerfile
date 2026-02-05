@@ -61,10 +61,10 @@ RUN git config --global --add safe.directory '/var/www/vendor/sabre/vobject' && 
 # Configure application
 COPY nginx.conf /etc/nginx/nginx.conf
 
-RUN cp -v docker/prepare/set_nginx_htpasswd.sh /root/set_nginx_htpasswd.sh \
-    && cp -v docker/config/default.conf /etc/nginx/http.d/default \
-    && cp -v docker/supervisord.conf /etc/supervisor/conf.d/ \
-    && rm -rf html \
+RUN cp docker/prepare/set_nginx_htpasswd.sh /root/set_nginx_htpasswd.sh \
+    && cp docker/config/default.conf /etc/nginx/http.d/default.conf \
+    && cp docker/supervisord.conf /etc/supervisord.conf \
+    && rm -rf localhost \
     && chown -R nginx:nginx /var/www \
     && /root/set_nginx_htpasswd.sh \
     && mkdir -p /var/run/php
