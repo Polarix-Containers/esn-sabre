@@ -16,7 +16,7 @@ LABEL maintainer="Thien Tran contact@tommytran.io"
 
 #Install dependencies and fix issue in apache
 RUN apk -U upgrade \
-    && apk add ca-certificates composer curl git libstdc++ nginx supervisor \
+    && apk add ca-certificates composer curl git libstdc++ nginx sed supervisor \
         ${PHP}-fpm \
         ${PHP}-cli \
         ${PHP}-curl \
