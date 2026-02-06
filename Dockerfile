@@ -54,10 +54,10 @@ RUN sed -i "s/;date.timezone =.*/date.timezone = UTC/" /etc/${PHP}/php.ini \
     && sed -i "s/pm.start_servers = 2/pm.start_servers = 8/" /etc/${PHP}/php-fpm.d/www.conf \
     && sed -i "s/pm.max_spare_servers = 3/pm.max_spare_servers = 16/" /etc/${PHP}/php-fpm.d/www.conf \
     && sed -i "s/;clear_env = no/clear_env = no/" /etc/${PHP}/php-fpm.d/www.conf \
-    && sed -i "s/;request_terminate_timeout = 0/request_terminate_timeout = 0/" /etc/${PHP}/php-fpm.d/www.conf \
+    && sed -i "s/;request_terminate_timeout = 0/request_terminate_timeout = 0/" /etc/${PHP}/php-fpm.d/www.conf
     # Logs configuration
-    && sed -i "s/error_log = \/var\/log\/php${PHPVERSION}-fpm.log/error_log = \/proc\/self\/fd\/2/" /etc/${PHP}/php-fpm.conf \
-    && sed -i "s/;catch_workers_output = yes/catch_workers_output = yes/" /etc/${PHP}/php-fpm.d/www.conf
+#    && sed -i "s/error_log = \/var\/log\/php${PHPVERSION}-fpm.log/error_log = \/proc\/self\/fd\/2/" /etc/${PHP}/php-fpm.conf \
+#    && sed -i "s/;catch_workers_output = yes/catch_workers_output = yes/" /etc/${PHP}/php-fpm.d/www.conf
 
 COPY --from=extract /var/www /var/www
 
