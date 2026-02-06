@@ -40,8 +40,8 @@ RUN apk -U upgrade \
     && rm -rf /var/cache/apk/*
 
 # Configure PHP (combine all sed commands)
-RUN sed -i "s/;date.timezone =.*/date.timezone = UTC/" /etc/${PHP}/php.ini
-#    && sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/${PHP}/php-fpm.conf \
+RUN sed -i "s/;date.timezone =.*/date.timezone = UTC/" /etc/${PHP}/php.ini \
+    && sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/${PHP}/php-fpm.conf
 #    && sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/${PHP}/php.ini \
 #    && sed -i -e "s/memory_limit\s*=\s*128M/memory_limit = 512M/g" /etc/${PHP}/php.ini \
 #    && sed -i "s/max_execution_time = 30/max_execution_time = 120/" /etc/${PHP}/php.ini \
