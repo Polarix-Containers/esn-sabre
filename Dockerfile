@@ -16,7 +16,7 @@ LABEL maintainer="Thien Tran contact@tommytran.io"
 
 #Install dependencies and fix issue in apache
 RUN apk -U upgrade \
-    && apk add ca-certificates composer curl git libstdc++ nginx sed supervisor \
+    && apk add ca-certificates composer curl git libstdc++ nginx supervisor \
         ${PHP}-fpm \
         ${PHP}-cli \
         ${PHP}-curl \
@@ -42,11 +42,11 @@ RUN apk -U upgrade \
 # Configure PHP (combine all sed commands)
 RUN sed -i "s/;date.timezone =.*/date.timezone = UTC/" /etc/${PHP}/php.ini \
     && sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/${PHP}/php-fpm.conf
-#    && sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/${PHP}/php.ini \
-#    && sed -i -e "s/memory_limit\s*=\s*128M/memory_limit = 512M/g" /etc/${PHP}/php.ini \
-#    && sed -i "s/max_execution_time = 30/max_execution_time = 120/" /etc/${PHP}/php.ini \
+    && sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/${PHP}/php.ini \
+    && sed -i -e "s/memory_limit\s*=\s*128M/memory_limit = 512M/g" /etc/${PHP}/php.ini \
+    && sed -i "s/max_execution_time = 30/max_execution_time = 120/" /etc/${PHP}/php.ini
 #    && sed -i "s/;listen.owner = nobody/listen.owner = nginx/" /etc/${PHP}/php-fpm.d/www.conf \
-#    && sed -i "s/;listen.group = nobody/listen.group = nginx" /etc/${PHP}/php-fpm.d/www.conf \
+#    && sed -i "s/;listen.group = nobody/listen.group = nginx/" /etc/${PHP}/php-fpm.d/www.conf \
 #    && sed -i "s/;listen.mode = 0660/listen.mode = 0660/" /etc/${PHP}/php-fpm.d/www.conf
 #    && sed -i "s|^listen = .*|listen = /var/run/php/php-fpm.sock|" /etc/${PHP}/php-fpm.d/www.conf \
 #    && sed -i "s/;listen.backlog = 511/listen.backlog = 4096/" /etc/${PHP}/php-fpm.d/www.conf \
