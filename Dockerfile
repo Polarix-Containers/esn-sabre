@@ -47,14 +47,14 @@ RUN sed -i "s/;date.timezone =.*/date.timezone = UTC/" /etc/${PHP}/php.ini \
     && sed -i "s/max_execution_time = 30/max_execution_time = 120/" /etc/${PHP}/php.ini \
     && sed -i "s/;listen.owner = nobody/listen.owner = nginx/" /etc/${PHP}/php-fpm.d/www.conf \
     && sed -i "s/;listen.group = nobody/listen.group = nginx" /etc/${PHP}/php-fpm.d/www.conf \
-    && sed -i "s/;listen.mode = 0660/listen.mode = 0660/" /etc/${PHP}/php-fpm.d/www.conf \
-    && sed -i "s|^listen = .*|listen = /var/run/php/php-fpm.sock|" /etc/${PHP}/php-fpm.d/www.conf \
-    && sed -i "s/;listen.backlog = 511/listen.backlog = 4096/" /etc/${PHP}/php-fpm.d/www.conf \
-    && sed -i "s/pm.max_children = 5/pm.max_children = 96/" /etc/${PHP}/php-fpm.d/www.conf \
-    && sed -i "s/pm.start_servers = 2/pm.start_servers = 8/" /etc/${PHP}/php-fpm.d/www.conf \
-    && sed -i "s/pm.max_spare_servers = 3/pm.max_spare_servers = 16/" /etc/${PHP}/php-fpm.d/www.conf \
-    && sed -i "s/;clear_env = no/clear_env = no/" /etc/${PHP}/php-fpm.d/www.conf \
-    && sed -i "s/;request_terminate_timeout = 0/request_terminate_timeout = 0/" /etc/${PHP}/php-fpm.d/www.conf
+    && sed -i "s/;listen.mode = 0660/listen.mode = 0660/" /etc/${PHP}/php-fpm.d/www.conf
+#    && sed -i "s|^listen = .*|listen = /var/run/php/php-fpm.sock|" /etc/${PHP}/php-fpm.d/www.conf \
+#    && sed -i "s/;listen.backlog = 511/listen.backlog = 4096/" /etc/${PHP}/php-fpm.d/www.conf \
+#    && sed -i "s/pm.max_children = 5/pm.max_children = 96/" /etc/${PHP}/php-fpm.d/www.conf \
+#    && sed -i "s/pm.start_servers = 2/pm.start_servers = 8/" /etc/${PHP}/php-fpm.d/www.conf \
+#    && sed -i "s/pm.max_spare_servers = 3/pm.max_spare_servers = 16/" /etc/${PHP}/php-fpm.d/www.conf \
+#    && sed -i "s/;clear_env = no/clear_env = no/" /etc/${PHP}/php-fpm.d/www.conf \
+#    && sed -i "s/;request_terminate_timeout = 0/request_terminate_timeout = 0/" /etc/${PHP}/php-fpm.d/www.conf
     # Logs configuration
 #    && sed -i "s/error_log = \/var\/log\/php${PHPVERSION}-fpm.log/error_log = \/proc\/self\/fd\/2/" /etc/${PHP}/php-fpm.conf \
 #    && sed -i "s/;catch_workers_output = yes/catch_workers_output = yes/" /etc/${PHP}/php-fpm.d/www.conf
