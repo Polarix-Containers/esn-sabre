@@ -16,7 +16,7 @@ LABEL maintainer="Thien Tran contact@tommytran.io"
 
 #Install dependencies and fix issue in apache
 RUN apk -U upgrade \
-    && apk add ca-certificates composer curl git libstdc++ nginx supervisor \
+    && apk add ca-certificates composer curl gettext git libstdc++ nginx supervisor \
         ${PHP}-fpm \
         ${PHP}-cli \
         ${PHP}-curl \
@@ -76,12 +76,12 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 RUN sed -i 's#/etc/nginx/sites-enabled/default#/etc/nginx/http.d/default.conf#' docker/prepare/set_nginx_htpasswd.sh \
     && cp docker/prepare/set_nginx_htpasswd.sh /root/set_nginx_htpasswd.sh \
-    && cp docker/config/default.conf /etc/nginx/http.d/default.conf \
-    && cp docker/supervisord.conf /etc/supervisord.conf \
-    && rm -rf localhost \
-    && chown -R nginx:nginx /var/www \
     && chmod u+x /root/set_nginx_htpasswd.sh \
-#    && /root/set_nginx_htpasswd.sh \
+    && sed -i 's#/etc/nginx/conf.d#/etc/nginx/http.d/#' scripts/start.sh \
+    && cp docker/config/default.conf.template /etc/nginx/http.d/default.conf.template \
+    && cp docker/config/rate_limit.conf.template /etc/nginx/http.d/rate_limit.conf.template \
+    && cp docker/supervisord.conf /etc/supervisord.conf \
+    && chown -R nginx:nginx /var/www \
     && mkdir -p /var/run/php
 
 EXPOSE 80
