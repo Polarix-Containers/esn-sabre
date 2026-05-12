@@ -1,9 +1,9 @@
-ARG VERSION=4_7_0-24-04-2026
+ARG VERSION=2.1.0
 ARG UID=200020
 ARG GID=200020
 ARG PHP=php84
 
-FROM linagora/esn-sabre:sabre-${VERSION} AS extract
+FROM linagora/esn-sabre:${VERSION} AS extract
 
 FROM alpine
 
