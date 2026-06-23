@@ -33,14 +33,15 @@ RUN apk -U upgrade \
         ${PHP}-simplexml \
         ${PHP}-xmlreader \
         ${PHP}-xmlwriter \
-        # Necessary for building composer
-        ${PHP}-openssl \
-    && ln -s /usr/bin/php84 /usr/bin/php \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
     && apk add --virtual .build-deps \
         build-base pkgconf \
         ${PHP}-dev \
         ${PHP}-pear \
+        # Necessary for building composer
+        ${PHP}-openssl \
+        ${PHP}-phar \
+    && ln -s /usr/bin/php84 /usr/bin/php \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
     && rm -rf /var/cache/apk/*
 
 # Configure PHP (combine all sed commands)
