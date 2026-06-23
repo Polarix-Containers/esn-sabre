@@ -37,6 +37,7 @@ RUN apk -U upgrade \
         build-base pkgconf \
         ${PHP}-dev \
         ${PHP}-pear \
+        ${PHP}-iconv \
         # Necessary for building composer
         ${PHP}-openssl \
         ${PHP}-phar \
