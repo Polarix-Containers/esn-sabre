@@ -34,10 +34,11 @@ RUN apk -U upgrade \
         ${PHP}-xmlreader \
         ${PHP}-xmlwriter \
     && apk add --virtual .build-deps \
-        build-base pkgconf \
+        build-base pkgconf phpunit \
         ${PHP}-dev \
-        ${PHP}-pear \
         ${PHP}-iconv \
+        ${PHP}-pear \
+        ${PHP}-tokenizer \
         # Necessary for building composer
         ${PHP}-openssl \
         ${PHP}-phar \
