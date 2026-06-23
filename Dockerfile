@@ -33,6 +33,7 @@ RUN apk -U upgrade \
         ${PHP}-simplexml \
         ${PHP}-xmlreader \
         ${PHP}-xmlwriter \
+    && ln -s /usr/bin/php84 /usr/bin/php \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
     && apk add --virtual .build-deps \
         build-base pkgconf \
