@@ -34,7 +34,7 @@ RUN apk -U upgrade \
         ${PHP}-xmlreader \
         ${PHP}-xmlwriter \
     && apk add --virtual .build-deps \
-        build-base pkgconf phpunit \
+        build-base pkgconf \
         ${PHP}-dev \
         ${PHP}-iconv \
         ${PHP}-pear \
