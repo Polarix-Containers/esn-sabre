@@ -1,4 +1,4 @@
-ARG VERSION=2.4.3
+ARG VERSION=2.4.3.4
 ARG UID=200020
 ARG GID=200020
 ARG PHP=php84
@@ -17,31 +17,31 @@ LABEL maintainer="Thien Tran contact@tommytran.io"
 #Install dependencies and fix issue in apache
 RUN apk -U upgrade \
     && apk add ca-certificates curl gettext git libstdc++ nginx supervisor tzdata \
-        ${PHP}-fpm \
-        ${PHP}-cli \
-        ${PHP}-curl \
-        ${PHP}-ldap \
-        ${PHP}-bcmath \
-        ${PHP}-mbstring \
-        ${PHP}-zip \
-        ${PHP}-xml \
-        ${PHP}-pecl-apcu \
-        ${PHP}-pecl-mongodb \
-        ${PHP}-sockets \
-        ${PHP}-ctype \
-        ${PHP}-dom \
-        ${PHP}-simplexml \
-        ${PHP}-xmlreader \
-        ${PHP}-xmlwriter \
+    ${PHP}-fpm \
+    ${PHP}-cli \
+    ${PHP}-curl \
+    ${PHP}-ldap \
+    ${PHP}-bcmath \
+    ${PHP}-mbstring \
+    ${PHP}-zip \
+    ${PHP}-xml \
+    ${PHP}-pecl-apcu \
+    ${PHP}-pecl-mongodb \
+    ${PHP}-sockets \
+    ${PHP}-ctype \
+    ${PHP}-dom \
+    ${PHP}-simplexml \
+    ${PHP}-xmlreader \
+    ${PHP}-xmlwriter \
     && apk add --virtual .build-deps \
-        build-base pkgconf \
-        ${PHP}-dev \
-        ${PHP}-iconv \
-        ${PHP}-pear \
-        ${PHP}-tokenizer \
-        # Necessary for building composer
-        ${PHP}-openssl \
-        ${PHP}-phar \
+    build-base pkgconf \
+    ${PHP}-dev \
+    ${PHP}-iconv \
+    ${PHP}-pear \
+    ${PHP}-tokenizer \
+    # Necessary for building composer
+    ${PHP}-openssl \
+    ${PHP}-phar \
     && ln -s /usr/bin/php84 /usr/bin/php \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
     && rm -rf /var/cache/apk/*
