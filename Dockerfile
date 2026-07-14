@@ -3,7 +3,7 @@ ARG UID=200020
 ARG GID=200020
 ARG PHP=php84
 
-FROM linagora/esn-sabre:${VERSION} AS extract
+FROM --platform=linux/amd64 linagora/esn-sabre:${VERSION} AS extract
 
 FROM alpine
 
