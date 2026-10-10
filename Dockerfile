@@ -86,7 +86,6 @@ RUN sed -i 's#/etc/nginx/sites-enabled/default#/etc/nginx/http.d/default.conf#' 
     && chmod u+x /root/set_nginx_htpasswd.sh \
     && sed -i 's#/etc/nginx/conf.d#/etc/nginx/http.d/#' scripts/start.sh \
     && cp docker/config/default.conf.template /etc/nginx/http.d/default.conf.template \
-    && cp docker/config/rate_limit.conf.template /etc/nginx/http.d/rate_limit.conf.template \
     && cp docker/supervisord.conf /etc/supervisord.conf \
     && chown -R nginx:nginx /var/www \
     && mkdir -p /var/run/php
